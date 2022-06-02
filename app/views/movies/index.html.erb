@@ -1,0 +1,39 @@
+<div class="container">
+<p></p>
+  <div class="row justify-content-center">
+    <%= form_tag movies_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a movie"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <%# comment one of those divs %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="movies">
+        <% @movies.each do |movie| %>
+          <h4><%= movie.searchable.title %></h4>
+          <p><%= movie.searchable.synopsis %></p>
+          <p><%= movie.searchable_type %></p>
+          <p><% movie.searchable.director.first_name %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="movies">
+        <% @movies.each do |movie| %>
+          <h4><%= movie.title %></h4>
+          <p><%= movie.synopsis %></p>
+          <p><%= movie.director.last_name %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+</div>
